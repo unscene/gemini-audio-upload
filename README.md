@@ -1,5 +1,7 @@
 # Gemini Multimodal Audio Upload
 
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/unscene/gemini-audio-upload?utm_source=oss&utm_medium=github&utm_campaign=unscene%2Fgemini-audio-upload&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
+
 This project provides a Model Context Protocol (MCP) server that enables audio analysis using Google's Gemini models. It allows you to upload audio files, provide optional context (JSON), and receive detailed analysis based on your prompts.
 
 ## Features
@@ -23,19 +25,9 @@ This project provides a Model Context Protocol (MCP) server that enables audio a
     cd gemini-audio-upload
     ```
 
-2.  Create and activate a virtual environment (recommended):
+2.  Install dependencies with uv:
     ```bash
-    python -m venv .venv
-    # Windows
-    .venv\Scripts\activate
-    # macOS/Linux
-    source .venv/bin/activate
-    ```
-
-3.  Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    pip install mcp # Required for the MCP server
+    uv sync
     ```
 
 ## Configuration
@@ -54,10 +46,10 @@ This project provides a Model Context Protocol (MCP) server that enables audio a
 
 ### Running the MCP Server
 
-You can run the MCP server directly using Python:
+You can run the MCP server directly using `uv`:
 
 ```bash
-python gemini_audio/mcp_server.py
+uv run gemini_audio/mcp_server.py
 ```
 
 However, it is typically run by an MCP client.
