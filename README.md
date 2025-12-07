@@ -77,6 +77,57 @@ The client would call the `analyze_audio` tool with:
 - `audio_path`: `C:\path\to\recording.wav`
 - `prompt`: "Tell me if the speaker sounds happy."
 
+## Client Configuration
+
+### Claude Desktop App
+
+To use this server with the Claude Desktop App, add the following configuration to your `claude_desktop_config.json` file.
+
+**Windows Location:** `%APPDATA%\Claude\claude_desktop_config.json`
+**macOS Location:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "gemini-audio": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/absolute/path/to/gemini-audio-upload",
+        "run",
+        "gemini_audio/mcp_server.py"
+      ],
+      "env": {
+        "GOOGLE_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+
+*Note: Replace `/absolute/path/to/gemini-audio-upload` with the actual path to where you cloned this repository. You can also set the `GOOGLE_API_KEY` in the `.env` file in the project directory instead of the config JSON, provided `uv` picks it up correctly or you use the python executable directly.*
+
+### VS Code (MCP Extension)
+
+If you are using an MCP extension in VS Code (like the official "Model Context Protocol" extension), you can typically configure it in your VS Code `settings.json`:
+
+```json
+"mcp.servers": {
+    "gemini-audio": {
+        "command": "uv",
+        "args": [
+            "--directory",
+            "C:\\absolute\\path\\to\\gemini-audio-upload",
+            "run",
+            "gemini_audio/mcp_server.py"
+        ],
+        "env": {
+            "GOOGLE_API_KEY": "your_api_key_here"
+        }
+    }
+}
+```
+
 ## License
 
 [MIT](LICENSE)
